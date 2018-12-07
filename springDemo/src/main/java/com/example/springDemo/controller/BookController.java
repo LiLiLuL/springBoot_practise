@@ -83,7 +83,7 @@ public class BookController {
 		//@RequestBody该注解修饰的函数，会将结果直接填充到HTTP的响应体中一般配合@RequestMapping使用
         //books.put(book.getTitle(), book);
 		 System.out.println("-------------------");
-        bookRepository.save(new Book("book00001","xxxx",new Date()));
+        bookRepository.save(new Book("book77777","xxxx",new Date()));
         return "success";
 	}
 	 
@@ -99,7 +99,7 @@ public class BookController {
 		//Book b=books.getTitle(booktitle)
 		// books.put(booktitle, b);
 	    Book b=bookRepository.findBook(booktitle);
-		b.setTitle("哎哟喂");
+		b.setTitle("哈哈哈哈");
 		b.setAuthor("akjdk");
 		b.setNew_time(new Date());
 		bookRepository.save(b);

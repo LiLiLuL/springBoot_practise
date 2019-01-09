@@ -11,8 +11,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name="book_book")
 public class Book {
-	@Id
-    @GeneratedValue  //@GeneratedValue表示bookId我们设置为主键从1开始自增，但是通常我们在实际业务开发过程中，主键需要从自定义序列中获取
+	 @Id
+     @GeneratedValue  //@GeneratedValue表示bookId我们设置为主键从1开始自增，但是通常我们在实际业务开发过程中，主键需要从自定义序列中获取
      private Long bookId;
 	
 	 @Column(nullable = false)

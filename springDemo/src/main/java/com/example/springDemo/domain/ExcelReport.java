@@ -2,75 +2,72 @@ package com.example.springDemo.domain;
 
 import java.util.Date;
 
-import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 import cn.afterturn.easypoi.excel.annotation.Excel;
-import cn.afterturn.easypoi.excel.annotation.ExcelTarget;
 
-@Entity
-@Table(name = "content")
-@ExcelTarget("report")
-@JsonIgnoreProperties(ignoreUnknown = true)
-public class Report {
-	@Id
-	@Column(name = "gapa_id", nullable = false)
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+public class ExcelReport {
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Excel(name="产品ID",orderNum="1",isImportField="id")
 	private Integer contentId; // 产品id
 
-	@Column(name = "product_category", nullable = false)
+	@Excel(name="产品类型",orderNum="2",isImportField="productCategory")
 	private String productCategory; // 产品类型
-
-	@Column(name = "organization", nullable = false)
+	
+	@Excel(name="基地组织",orderNum="3",isImportField="organization")
 	private String organization; // 基地组织
 
-	@Column(name = "factory_category", nullable = false)
+	@Excel(name="厂别",orderNum="4",isImportField="factoryCategory")
 	private String factoryCategory; // 厂别
 
-	@Column(name = "product_number", nullable = true)
+	@Excel(name="产品型号",orderNum="5",isImportField="productNumber")
 	private String productNumber; // 产品型号
 
-	@Column(name = "month_plan", nullable = false)
+	@Excel(name="M+1锁定规划",orderNum="6",isImportField="monplan")
 	private Double monplan; // M+1锁定规划
 
-	@Column(name = "organization_month_plan", nullable = false)
+	@Excel(name="基地月锁定规划",orderNum="7",isImportField="orgMonPlan")
 	private Double orgMonPlan; // 基地月锁定规划
 
-	@Column(name = "plan_produce", nullable = true)
+	@Excel(name="量产计划产出",orderNum="8",isImportField="planProduce")
 	private Double planProduce; // 量产计划产出
 
-	@Column(name = "real_produce", nullable = true)
+	@Excel(name="量产实际产出",orderNum="9",isImportField="realProduce")
 	private Double realProduce; // 量产实际产出
 
-	@Column(name = "gap", nullable = true)
+	@Excel(name="gap值",orderNum="10",isImportField="gap")
 	private Double gap; // gap值
 
-	@Column(name = "achievement", nullable = true)
+	@Excel(name="达成率",orderNum="11",isImportField="achievement")
 	private Double achievement; // 达成率
-
-	@Column(name = "reason", nullable = true)
+	
+	@Excel(name="原因分析",orderNum="12",isImportField="reason")
 	private String reason; // 原因分析
-
-	@Column(name = "gapa_date", nullable = true)
+	
+	@Excel(name="时间",orderNum="13",exportFormat = "yyyy-MM-dd",isImportField="new_date")
 	private Date new_date;
-
-
-	public Report() {
+	public ExcelReport() {
+		
 	}
-
-	@Override
-	public String toString() {
-		return "{" + "productCategory=" + productCategory + ", organization='" + organization + '\'' + ", factoryCategory='" + factoryCategory + '\'' 
-				+ ", productNumber=" + productNumber + ", monplan='" + monplan + '\'' + ", orgMonPlan='" + orgMonPlan + '\'' 
-				+ ", planProduce=" + planProduce + ", realProduce='" + realProduce + '\'' + ", gap='" + gap + '\''
-				+ ", achievement=" + achievement + ", reason='" + reason + '\'' + ", new_date='" + new_date + '\''+'}';
-	}
-
-	public Report(String productCategory, String organization, String productNumber) {
-		this.productCategory = productCategory;
-		this.productNumber = productNumber;
-		this.organization = organization;
+	public ExcelReport(Integer contentId,String productCategory, String organization, 
+			String factoryCategory,String productNumber,Double monplan,Double orgMonPlan,
+			Double planProduce,Double realProduce,Double gap,Double achievement,String reason,Date new_date) {
+		  this.contentId=contentId;
+		  this.productCategory=productCategory;
+		  this.organization=organization;
+		  this.factoryCategory=factoryCategory;
+		  this.productNumber=productNumber;
+		  this.monplan=monplan;
+		  this.orgMonPlan=orgMonPlan;
+		  this.planProduce=planProduce;
+		  this.realProduce=this.realProduce;
+		  this.gap=gap;
+		  this.achievement=achievement;
+		  this.new_date=new_date;
+		
 	}
 
 	public Integer getContentId() {
@@ -176,7 +173,6 @@ public class Report {
 	public void setNew_date(Date new_date) {
 		this.new_date = new_date;
 	}
-
-
+	
 
 }

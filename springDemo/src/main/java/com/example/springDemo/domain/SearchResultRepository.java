@@ -30,7 +30,7 @@ public interface SearchResultRepository  extends JpaRepository<SearchResult, Dou
 			+ "from content as r group by date_content,product_category,organization,factory_category",nativeQuery = true)
 	void findByWeek();
 	
-	@Query(value="select * from content_temp",nativeQuery=true)
+	@Query(value="select @rowNum\\:=@rowNum+1 AS id,con.* from content_temp con,(select (@rowNum\\:=0)) r",nativeQuery=true)
 	List<SearchResult> findAllNew();
 	
 }

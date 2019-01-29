@@ -299,8 +299,7 @@ public class ReportController {
 		Map<String, Object> map = new HashMap<String, Object>();
 		try {
 			if(num==3) {
-				searchRepository.findByDefrence();
-				List<SearchResult> reports=searchRepository.findAll();
+				List<SearchResult> reports=searchRepository.findAllNew();
 				map.clear();
 				map.put("result", reports);
 			}else if(num==2){
@@ -310,7 +309,7 @@ public class ReportController {
 				//List<SearchResult> reports =Ebean.getServer("mysql").find(SearchResult.class).where().findList();
 				
 				
-				List<SearchResult> reports=searchRepository.findAll();
+				List<SearchResult> reports=searchRepository.findAllNew();
 				for(SearchResult reportInfo: reports) {
 					System.out.println(reportInfo);
 				}

@@ -12,7 +12,12 @@ import javax.persistence.Table;
 @Entity
 @Table(name="content_temp")
 public class SearchResult {
+
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id")
+	private Integer id;
+	
 	@Column(name="date_content",nullable=true)
     private String date_content;
 	
@@ -116,5 +121,15 @@ public class SearchResult {
 	public void setReason(String reason) {
 		this.reason = reason;
 	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+
     
 }
